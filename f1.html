@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOSTA</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body onload=init()>
+    <div>
+        <h1 id="gameOver"></h1>
+        <div class="principal-page" id="principalPage">
+            <div class="game-container">
+                <div class="game-display">
+                    <div class="speedway">
+                        <div class="lane">
+                            <img src="img/red.png" alt="" id="red" class="runner">
+                            <div class="line"></div>
+                        </div>
+                        <div class="lane">
+                            <img src="img/blue.png" alt="" id="blue" class="runner">
+                            <div class="line"></div>
+                        </div>
+                        <div class="lane">
+                            <img src="img/white.png" alt="" id="white" class="runner">
+                            <div class="line"></div>
+                        </div>
+                        <div class="lane">
+                            <img src="img/pink.png" alt="" id="pink" class="runner">
+                            <div class="line"></div>
+                        </div>
+                        <div class="lane">
+                            <img src="img/green.png" alt="" id="green" class="runner">
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                    <div class="final-line"></div>
+                </div>
+                <div class="below-display">
+                    <p style="color:white">escolha uma das opções: </p>
+                    <div class="bet-choice" id="betChoice">
+                        <div class="redBet" onclick=betClick(this)>
+                            <div >2x</div>
+                        </div>
+                        <div class="blueBet" onclick=betClick(this)>
+                            <div>5x</div>
+                        </div>
+                        <div class="whiteBet" onclick=betClick(this)>
+                            <div >10x</div>
+                        </div>
+                        <div class="pinkBet" onclick=betClick(this)>
+                            <div>5x</div>
+                        </div>
+                        <div class="greenBet" onclick=betClick(this)>
+                            <div>2x</div>
+                        </div>
+                    </div>
+                    <div class='game-inputs'>
+                        <p>insira seu dinheiro: </p>
+                        <input type="text" name="" id="betValueInpt" class="num-input" >
+                    </div>
+                    <div class="player-display">
+                        <h5 id="betValue"></h5>
+                        <input type="button" value="Apostar" id="betButton" class="bet-button" onclick=betBtn()>  
+                        <h5 id="profitValue"></h5>
+                        <div class="money" id="moneyDisplay"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

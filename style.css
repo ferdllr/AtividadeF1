@@ -1,0 +1,232 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+  }
+body{
+    min-height: 100%;
+    background-color: #000000;
+    background-image:  radial-gradient(#f7ff6e 2px, transparent 2px), radial-gradient(#f7ff6e 2px, #000000 2px);
+    background-size: 80px 80px;
+    background-position: 0 0,40px 40px;
+}
+body .principal-page{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-items: center;
+}
+.game-container{
+    width: 980px;
+    height: 750px;
+    background-color: #272b41;
+    box-shadow: 1px 1px 30px #ffffff;
+    margin-top: 117.5px;
+}
+.game-display{
+    margin: 0 auto;
+    align-items: center;
+    margin-bottom: 3%;
+    display: flex;
+    width: 100%;
+    height: 350px;
+    border: 1px solid #0f1923;
+    background-color: #0f1923;
+}
+.speedway{
+    margin-left: 100px;
+    background-color: #8a8a8a;
+    background-image:  radial-gradient(#ffffff 0.75px, transparent 0.75px), radial-gradient(#ffffff 0.75px, #8a8a8a 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0,15px 15px;
+    width: 700px;
+    height: 300px;
+    display: grid;
+}
+.lane{
+    width: 100%;
+    height: 90%;
+}
+.line{
+    width: 100%;
+    height: 2%;
+    background-color: #ffffff;
+    background-image: linear-gradient(to right, #ff0000, #ff0000 2px, #ffffff 2px, #ffffff );
+    background-size: 4px 100%;
+}
+.runner{
+    position: relative;
+    overflow:hidden;
+    width: 50px;
+    height: 50px;
+}
+input{
+    width: 10px;
+    height: 10px;
+}
+.final-line{
+    background-color: #ffffff;
+    background-image:  repeating-linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000), repeating-linear-gradient(45deg, #000000 25%, #ffffff 25%, #ffffff 75%, #000000 75%, #000000);
+    background-position: 0 0, 40px 40px;
+    background-size: 80px 80px;
+    height: 300px;
+    width: 80px;
+}
+.below-display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 580px;
+    height: 300px;
+    background: none;
+    border: 1px solid #0f1923;
+    border-radius: 1%;
+}
+.bet-choice{
+    display: flex;
+    align-items: center;
+    justify-content: space-around !important;
+    height: 70px;
+    width: 400px;
+}
+.game-inputs{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 40px;
+}
+.num-input{
+    width: 110px;
+    height: 30px;
+    background-color: #0f1923;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.player-display{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 25px;
+    width: 450px;
+    height: 200px;
+    gap: 5%;
+}
+.player-display input{
+    margin: 0 auto;
+    width: 80px;
+    height: 40px;
+    border: none;
+    background-color: rgba(180, 1, 1, 0.842);
+    border-radius: 5%;
+    margin-bottom: 40px;
+    border: none;
+}
+
+.redBet{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 90%;
+    background-color: rgb(241, 44, 76);
+    border-radius: 5%;
+    border: 2px solid rgb(241, 44, 76);
+}
+.blueBet{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 90%;
+    background-color: rgb(63, 50, 247);
+    border-radius: 5%;
+    border: 2px solid rgb(63, 50, 247);
+}
+.whiteBet{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 90%;
+    background-color: white;
+    color: rgb(241, 44, 76);
+    border-radius: 5%;
+    border: 2px solid white;
+}
+.greenBet{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 90%;
+    background-color: rgb(56, 247, 50);
+    border-radius: 5%;
+    border: 2px solid rgb(73, 247, 50);
+}
+.pinkBet{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 2;
+    letter-spacing: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 90%;
+    background-color: rgb(247, 50, 204);
+    border-radius: 5%;
+    border: 2px solid rgb(247, 50, 204);
+}
+
+#gameOver{
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    left: 24%;
+    height: 200px;
+    width: 1000px;
+    color: white;
+}
