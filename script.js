@@ -1,6 +1,3 @@
-let red = null;
-let white = null;
-let blue = null;
 let colorSelected = undefined;
 let winner = null;
 let money = 0;
@@ -22,11 +19,11 @@ class runner{
 function init(){
     money = 100;
     profit = 0;
-    red = new runner("red", 5,document.getElementById("red"), "redBet", 2);
-    white = new runner("white", 1,document.getElementById("white"), "whiteBet", 10);
-    blue = new runner("blue", 2,document.getElementById("blue"), "blueBet", 5);
-    green = new runner("green", 5, document.getElementById("green"), "greenBet", 2);
-    pink = new runner("pink", 2,document.getElementById("pink"), "pinkBet", 5);
+    let red = new runner("red", 5,document.getElementById("red"), "redBet", 2);
+    let white = new runner("white", 1,document.getElementById("white"), "whiteBet", 10);
+    let blue = new runner("blue", 2,document.getElementById("blue"), "blueBet", 5);
+    let green = new runner("green", 5, document.getElementById("green"), "greenBet", 2);
+    let pink = new runner("pink", 2,document.getElementById("pink"), "pinkBet", 5);
     runners = [red, blue, white, pink, green];
     document.getElementById("moneyDisplay").innerHTML = money + "$";
     setWinner();
