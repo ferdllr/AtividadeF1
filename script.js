@@ -1,3 +1,5 @@
+//declarando variaveis
+
 let colorSelected = undefined;
 let winner = null;
 let money = 0;
@@ -6,16 +8,19 @@ let isReady = false;
 let runners = [];
 let playerBet = undefined;
 
+//criando uma classe pros carros (apenas por organização)
+
 class runner{
-  constructor(name, chance, div, divName, multiplier){
-    this.name = name;
-    this.chance = chance;
-    this.div = div;
-    this.divName = divName;
-    this.multiplier = multiplier;
+  constructor(name, chance, img, divName, multiplier){
+    this.name = name; //cor do carro
+    this.chance = chance; //chance daquele carro vencer
+    this.img = img; //imagem do carro no html
+    this.divName = divName; //nome da div que representa a aposta do jogador (playerBet)
+    this.multiplier = multiplier; //quanto aquele carro ira multiplicar a aposta do jogador
   }
 }
 
+//a funçao inicial do jogo irá definir algumas variaveis declaradas anteriormente no codigo, alem de ja definir o vencedor
 function init(){
     money = 100;
     profit = 0;
@@ -29,21 +34,22 @@ function init(){
     setWinner();
 }
 
+//função que inicia o jogo, basicamente a função "princial" do codigo
 function startGame(val){
-    moneyUpdate(val, true);
-    if (moneyCheck() === false) {return};
+    setMoney(val, true); //subtrai a quantia apostada na carteira do jogador
+    if (moneyCheck() === false) {return}; //checando se o jogador ainda possui dinheiro pra jogar, caso não tenha o jogo sera interrompido
     document.getElementById("betValue").innerHTML = "você apostou: " + val;
-    run(winner.div, true);
+    run(winner.img, true); //função pra animação do carro vencedor
     for(let i = 0; i < 5; i++){
       if(runners[i] != winner){
-        run(runners[i].div, false);
+        run(runners[i].img, false); //função pra animação do carro perdedor
       }
     }
     
-
+    //função de resetar o jogo, essa função só será executada apos a corrida finalizar, assim evitando mostrar imediatamente se o jogador venceu ou nao a aposta
     setTimeout(function reset(){
       if (winner.divName === playerBet){
-        moneyUpdate(val * winner.multiplier, false);
+        setMoney(val * winner.multiplier, false);
         profit += val * winner.multiplier - val;
       } else{
         profit -= val;
@@ -55,70 +61,73 @@ function startGame(val){
     }, 2500);
 }
 
-
+//animação dos carros
 function run(element, isWinner){
-  let finalPos = Math.floor(Math.random() * (610 - 500 +1)) + 500;
+  let finalPos = Math.floor(Math.random() * (610 - 500 +1)) + 500; //"finalPos" é o fim do percurso do carro
   console.log(finalPos);
-  if (isWinner) {finalPos = 700};
+  if (isWinner) {finalPos = 700};// o percurso do carro vencedor acaba em 700 pixels, diferente dos perdedores que não passarão de 610
 
-  let pos = 0;
-  let vel = 6;
+  let pos = 0; //posiçõa inicial
+  let vel = 5; //velocidade dos carros
 
   let interval = setInterval(function(){
     if(pos >= finalPos){
-      clearInterval(interval);
+      clearInterval(interval); //caso o carro chegue em sua posição final, a animação irá se encerrar
     }
-    element.style.left = pos + "px";
+    element.style.left = pos + "px"; //codigo pra mover o carro para a direita
     pos += vel;
-  },1);
+  },1); //intervalo que roda de 1 em 1 milisegundo, assim dando fluidez a animação
 
 }
 
 
-
+//função que define o vencedor
 function setWinner(cheat){
-  let winnerArray = [];
-  for(let i = 0; i < runners.length; i++){
-    for(let u = 0; u < runners[i].chance; u++){
+  let winnerArray = []; //esse array será utilizado pra multiplicar os carros de acordo com suas chances de vitoria
+  for(let i = 0; i < runners.length; i++){ //loop para ler o array dos carros
+    for(let u = 0; u < runners[i].chance; u++){ //loop para multiplicar o carro dentro do array
       winnerArray.push(runners[i]);
     }
   }
-  if(cheat != undefined) {winner = cheat}
-  else {winner = winnerArray[Math.floor(Math.random() * winnerArray.length)];}
+  if(cheat != undefined) {winner = cheat} //cheat para definir o vencedor atraves do console do navegador
+  else {winner = winnerArray[Math.floor(Math.random() * winnerArray.length)];} //sorteando o vencedor pelo array "winnerArray"
   console.log(winner);
 }
 
+//função para selecionar o carro que o jogador apostar e mudar o estilo do botão
 function betClick(div){
-  if (colorSelected === div) return;
+  if (colorSelected === div) return; //caso o jogador selecione o mesmo carro varias vezes, nada vai acontecer
   if (colorSelected != undefined){
-      colorSelected.style.borderColor = null;
+      colorSelected.style.borderColor = null; //comando pra tirar a borda do botão que foi selecionado anteriormente
   } 
 
-  colorSelected = div; 
-  let divClass = colorSelected.getAttribute("class");
+  colorSelected = div; //definindo a cor selecionada
+  let divClass = colorSelected.getAttribute("class"); //pegando o nome da classe da div selecionada
   console.log(divClass);
   if(divClass === "whiteBet"){
     colorSelected.style.borderColor = "red";
   } else{
-    colorSelected.style.borderColor = "black";
+    colorSelected.style.borderColor = "black"; 
   }
-  playerBet = divClass;
+  playerBet = divClass; //definindo a escolha do jogador
   console.log(playerBet);
 }
 
-function betBtn(){
+//função para o botão de aposta
+function betBtn(){ 
   document.getElementById("betValueInpt").disabled = true;
   document.getElementById("betButton").disabled = true;
-  startGame(document.getElementById("betValueInpt").value);
+  startGame(document.getElementById("betValueInpt").value); //pega o valor que o jogador apostou e inicia o jogo
 } 
 
-
-function moneyUpdate(val, subtract){
+//função pra incrementar ou subtrair o dinheiro do jogador e atualizar o display
+function setMoney(val, subtract){
   if(subtract) {money -= val;}
   else{money += val;}
   document.getElementById("moneyDisplay").innerHTML = money + "$";
 }
 
+//função pro gameOver
 function moneyCheck(){
   if(money > 0) return true;
   let gameContainer = document.getElementById("principalPage");
