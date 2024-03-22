@@ -54,7 +54,7 @@ function startGame(val){
       } else{
         profit -= val;
       }
-      document.getElementById("profitValue").innerHTML = "você lucrou "+ profit + " reais no total!";
+      document.getElementById("profitValue").innerHTML = "você lucrou "+ profit + "!";
       document.getElementById("betValueInpt").disabled = false;
       document.getElementById("betButton").disabled = false;
       setWinner();
